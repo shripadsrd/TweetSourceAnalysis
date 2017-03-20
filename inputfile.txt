@@ -1,0 +1,5 @@
+Spark is a fast and general cluster computing system for Big Data. " +
+    "It provideshigh-level APIs in Scala, Java, Python, and R, " +
+     "and an shripad optimized engine thatsupports general computation graphs for data analysis. " +
+ "It also supports arich set ha ha ha ha of higher-level tools including Spark SQL for SQL and DataFrames." +
+   "MLlib for machine shripad learning, GraphX for graph processing,and Spark Streaming for stream processing.
