@@ -3,7 +3,7 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming.kafka.KafkaUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.sql.{DataFrame, SQLContext, SparkSession}
+import org.apache.spark.sql.{DataFrame, Dataset, SQLContext, SparkSession, functions}
 
 object TweetReader extends App{
   val sparkConf = new SparkConf().setAppName("Twitter source count").setMaster("local[2]")
@@ -23,9 +23,12 @@ object TweetReader extends App{
   messages.foreachRDD { rdd =>
     val message: RDD[String] = rdd.map { y => y._2 }
     val df:DataFrame = sqlContext.read.json(message).toDF()
-    println("************")
-    println(df.show())
-    println("************")
+    
+    //    case class Tweet(tweetId: Long, text: String, source: String, retweetCount: Long)
+    //    case class User(userId: Long, userName: String, screenName: String, tweet: Tweet)
+    //    val userId:DataFrame = df.select("user").select("user.id")
+    //    userId.printSchema()
+    //    userId.show()
   }
   ssc.start()
   ssc.awaitTermination()
