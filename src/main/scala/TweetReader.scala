@@ -23,7 +23,7 @@ object TweetReader extends App{
   messages.foreachRDD { rdd =>
     val message: RDD[String] = rdd.map { y => y._2 }
     val df:DataFrame = sqlContext.read.json(message).toDF()
-    
+
     //    case class Tweet(tweetId: Long, text: String, source: String, retweetCount: Long)
     //    case class User(userId: Long, userName: String, screenName: String, tweet: Tweet)
     //    val userId:DataFrame = df.select("user").select("user.id")
